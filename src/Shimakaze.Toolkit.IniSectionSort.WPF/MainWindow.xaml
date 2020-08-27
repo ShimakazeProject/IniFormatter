@@ -1,0 +1,75 @@
+﻿<Window x:Class="Shimakaze.Toolkit.IniSectionSort.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Shimakaze.Toolkit.IniSectionSort.WPF"
+        mc:Ignorable="d"
+        Title="Shimakaze.Toolkit.IniSectionSort" Height="600" Width="400">
+    <StackPanel>
+        <GroupBox Margin="5" Header="IniSectionSort">
+            <StackPanel>
+                <GroupBox Margin="5" Padding="5" Header="文件">
+                    <StackPanel>
+                        <TextBlock Text="输入文件 (Required)"/>
+                        <Grid Margin="5 2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox x:Name="tbInput"/>
+                            <Button Content="浏览" Grid.Column="1" Click="OpenFileButton_Click"/>
+                        </Grid>
+                        <TextBlock Text="输出文件 (Required)"/>
+                        <Grid Margin="5 2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox x:Name="tbOutput"/>
+                            <Button Content="浏览" Grid.Column="1" Click="SaveFileButton_Click"/>
+                        </Grid>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Margin="5 2" Padding="5" Header="选项">
+                    <StackPanel>
+                        <TextBlock Text="输出节名"/>
+                        <TextBox x:Name="tbTargetSectionName" ToolTip="在输出结果前添加一个节头 (Default: {null})" Margin="5 2"/>
+
+                        <TextBlock Text="键前缀"/>
+                        <TextBox x:Name="tbPrefix" ToolTip="以此字符串为前缀 (Default: {null})" Margin="5 2"/>
+
+                        <TextBlock Text="键计数起始值"/>
+                        <TextBox x:Name="tbFirst" ToolTip="以此数字开始计数 (Default: 0)" Margin="5 2" TextChanged="OnlyNumber_TextChanged"/>
+
+                        <TextBlock Text="键计数值长度"/>
+                        <TextBox x:Name="tbDigit" ToolTip="以此数字规范长度, 短则补零 长则忽略 (Default: {null})" Margin="5 2" TextChanged="OnlyNumber_TextChanged"/>
+
+                        <TextBlock Text="注释键"/>
+                        <TextBox x:Name="tbSummaryKey" ToolTip="将此键的值作为注释输出 (Default: {null})" Margin="5 2"/>
+
+                        <Expander IsExpanded="{Binding IsChecked, ElementName=cbSort}">
+                            <Expander.Header>
+                                <CheckBox x:Name="cbSort" Content="重新排序" ToolTip="重新排列输出结果 (Default: false)"/>
+                            </Expander.Header>
+                            <StackPanel Margin="5 2">
+                                <TextBlock Text="排序目标键"/>
+                                <TextBox x:Name="tbSortTargetKey" ToolTip="通过此键的键值排序 (Default: {null})" Text="{Binding Text, ElementName=tbSummaryKey, Mode=OneWay}" Margin="5 2"/>
+                            </StackPanel>
+                        </Expander>
+                        <Expander Header="约束">
+                            <StackPanel Margin="5 2">
+                                <TextBlock Text="键约束"/>
+                                <TextBox x:Name="tbKeyConstraint" ToolTip="只有包含此键的节才会被输出 (Default: {null})" Text="{Binding Text, ElementName=tbSummaryKey, Mode=OneWay}" Margin="5 2"/>
+
+                                <TextBlock Text="值约束"/>
+                                <TextBox x:Name="tbValueConstraint" ToolTip="只有当键约束的键值等于这里的值时才会被输出 (Default: {null})" Margin="5 2"/>
+                            </StackPanel>
+                        </Expander>
+                        <Button Content="开始格式化" Grid.Row="4" Click="FormatButton_Click"/>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </GroupBox>
+    </StackPanel>
+</Window>
