@@ -6,6 +6,8 @@
     <Authors>舰队的偶像-岛风酱!</Authors>
     <Product>INI文件排序工具</Product>
     <NeutralLanguage>zh-CN</NeutralLanguage>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -13,8 +15,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CommandLineParser" Version="2.8.0" />
     <PackageReference Include="Shimakaze.Struct.Ini" Version="1.0.1" />
+    <PackageReference Include="System.CommandLine" Version="2.0.0-beta1.20371.2" />
   </ItemGroup>
 
 </Project>
