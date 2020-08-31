@@ -60,6 +60,7 @@ namespace Shimakaze.Toolkit.IniSectionSort.WPF
                 result.ToList().ForEach(i => sw.WriteLine(i));
                 await sw.FlushAsync();
             }
+#if !DEBUG
             catch (Exception ex)
             {
                 using var logfs = new FileStream("program.err.log", FileMode.Create, FileAccess.Write, FileShare.Read);
@@ -69,7 +70,9 @@ namespace Shimakaze.Toolkit.IniSectionSort.WPF
                 await sw.WriteLineAsync(ex.StackTrace);
                 await sw.FlushAsync();
                 MessageBox.Show(ex.ToString(), "发生异常:");
+
             }
+#endif
             finally
             {
                 btn.IsEnabled = true;
