@@ -23,7 +23,8 @@ namespace Shimakaze.Toolkit.IniSectionSort
             else if (string.IsNullOrEmpty(options?.ValueConstraint))// 是否有值约束
                 Result = ini.Sections.Where(i => i.TryGetKey(options.KeyConstraint, out _));// 仅键约束
             else
-                Result = ini.Sections.Where(i => i.TryGetKey(options.KeyConstraint)?.Value.Equals(options.ValueConstraint) ?? false);// 值约束
+                Result = ini.Sections.Where(i => i.TryGetKey(options.KeyConstraint)?.Value.ToString().Equals(options.ValueConstraint) ?? false);// 值约束
+
 
             if (options?.Sort ?? false)// 是否排序
                 if (string.IsNullOrEmpty(options?.SortTargetKey))// 是否按目标键的值排序
