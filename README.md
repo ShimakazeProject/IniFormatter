@@ -22,4 +22,5 @@ Red Alert 2 INI文件注册信息表生成工具
 
 ## 鸣谢
 使用的项目[Shimakaze.Struct.Ini](https://github.com/ShimakazeProject/Shimakaze.Struct.Ini)  
-感谢小星星提供的想法及对本插件进行测试
+感谢小星星提供的想法及对本插件进行测试  
+感谢Harmonia的反馈
